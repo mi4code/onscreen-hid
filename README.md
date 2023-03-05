@@ -21,3 +21,11 @@ Fully customizable onscreen keyboard and touchpad app written in python and HTML
  
 ## Configuration
  see variables on the begining of the *.py file
+
+## TODOs
+ * settings GUI
+ * monitoring caps/num/scroll lock
+ * dead keys
+ * handwriting/speech to text
+ * act as bluetooth/USB HID device (Linux)
+ * apply layout to hardware keyboard (Windows -> export to *.klc; Linux -> export to ???)
