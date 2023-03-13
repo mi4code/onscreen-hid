@@ -43,7 +43,7 @@ FORCE_PYWEBVIEW_RENDERER = "" # gtk/edgechromium/qt(not recomended)/cocoa(untest
 FORCE_KEYBOARD_BACKEND = "" # mouse/pynput
 FORCE_MOUSE_BACKEND = ""  # mouse/pynput
 
-PYWEBVIEW_DEBUG = True
+PYWEBVIEW_DEBUG = False
 FORCE_DISABLE_CUSTOM_LAYOUT = False
 FORCE_DISABLE_VISUALIZATION = False
 DRAW_MOUSE_POINTER = ""#"<p style='color: rgba(0,255,0, 0.5);'>🢄</p>" # ""=dont; "<html tag>"=do
