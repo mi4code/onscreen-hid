@@ -1,0 +1,420 @@
+<html>
+    <head>
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0"> 
+        <style>
+			:root {
+			  --keys_between: 3px;
+			  
+			  --color_background: rgba(0,0,0,0.5);
+			  --color_text: rgb(200,200,200);
+			  --color_keys: rgba(25,25,25,1);
+			  --color_keys_pressed: rgba(100,100,100,0.5) !important;  /* HAS TO BE '!important' (OTHERVISE DOESNT SHOW) */
+			  
+			  
+			  --font_name: Arial, sans-serif;
+			  --font_size: 10px;
+			  
+			  /* TO HIDE ANY KEY BLOCK SET display: none; */
+            }
+			
+			body {
+			  background: var(--color_background);
+			  margin: 0;
+			  padding: var(--keys_between);
+			  
+			}
+			
+			#windowKeyboardArea {
+				display: inline-grid; 
+				grid-template-columns: repeat(28, 1fr); 
+				grid-template-rows: repeat(6, 1fr);  
+				margin: 0; 
+				padding: 0; 
+				height: 100%; 
+				width: 100%;
+			}
+			
+			#alphanumeric, #control, #numpad, #touchpad, #function, #media {
+			  text-align: center;
+			  font-size: 0;
+			  padding: var(--keys_between);
+			  display: inline-grid; 
+			  width: auto;
+			}
+			
+			#alphanumeric {
+				grid-template-columns: repeat(30, 1fr); 
+				grid-template-rows: repeat(10, 1fr); 
+				
+				grid-column: span 15;
+				grid-row: span 5;
+			}
+			#control {
+				grid-template-columns: repeat(6, 1fr); 
+				grid-template-rows: repeat(10, 1fr); 
+				
+				grid-column: span 3;
+				grid-row: span 5;
+			}
+			#numpad {
+				grid-template-columns: repeat(8, 1fr); 
+				grid-template-rows: repeat(10, 1fr); 
+				
+				grid-column: span 4;
+				grid-row: span 5;
+			}
+			#function {
+				grid-template-columns: repeat(50, 1fr); 
+				grid-template-rows: repeat(2, 1fr);
+				
+				grid-column: span 99;
+				grid-row: span 1;
+			}
+			#touchpad {
+				grid-template-columns: repeat(2, 1fr); 
+				grid-template-rows: repeat(1, 1fr); 
+
+				grid-column: span 8;
+                grid-row: span 5;				
+			}
+			#media {
+				grid-template-columns: repeat(48, 1fr); 
+				grid-template-rows: repeat(2, 1fr);
+				
+				grid-column: span 99;
+				grid-row: span 1;
+			}
+
+			
+			#alphanumeric div , #control div, #numpad div, #function div, #touchpad div, #media div  {
+				grid-column: span 2;
+				grid-row: span 2;
+				
+			    display:inline-flex;
+			    align-items: center;
+				justify-content: center;
+			
+				color: var(--color_text);
+				background-color: var(--color_keys);
+				border: 0px solid black;
+				font-size: var(--font_size);
+				font-family: var(--font_name);
+
+				margin: calc(var(--keys_between)/2);
+			}
+			
+			.pressed_button {
+				background-color: var(--color_keys_pressed);
+			}
+			
+			
+			
+			#windowControlWidget {
+				position: absolute; 
+				width: auto; 
+				height: 25px; 
+				right: calc(var(--keys_between)/2); 
+				top: calc(var(--keys_between)/2);
+			}
+			#windowControlWidget button{
+				background-color: rgb(50,50,50);
+				width: 25px;
+				height: 100%;
+				color: rgb(200,200,200);
+				padding: 0;
+				border: 0;
+				margin: 0;
+				font-size: x-small;
+			}
+        </style>
+    </head>
+    <body  >
+	
+	<!--<input type="text" id="testElement" onblur="var testElement=this; setTimeout(function(){testElement.focus()},1);">-->
+	
+	<div id="windowControlWidget">
+		<button class='pywebview-drag-region'>✋</button>
+		<button onclick="pywebview.api.UI_settings()">⚙</button>
+		<button onclick="pywebview.api.UI_minimize()">_</button>
+		<button onclick="pywebview.api.UI_close()">⛌</button>
+	</div>
+	
+	<div id="windowKeyboardArea">
+		<div id="media">
+			<div id="KEY_M_PREV"></div>
+			<div id="KEY_M_PLAY_PAUSE"></div>
+			<div id="KEY_M_NEXT"></div>
+			
+			<div id="KEY_M_VOL_M"></div>
+			<div id="KEY_M_VOL_D"></div>
+			<div id="KEY_M_VOL_U"></div>
+		</div>
+		
+		<div id="function">
+			<div id="KEY_C_ESC"></div>
+			<div id="KEY_F_F1"></div>
+			<div id="KEY_F_F2"></div>
+			<div id="KEY_F_F3"></div>
+			<div id="KEY_F_F4"></div>
+			<div id="KEY_F_F5"></div>
+			<div id="KEY_F_F6"></div>
+			<div id="KEY_F_F7"></div>
+			<div id="KEY_F_F8"></div>
+			<div id="KEY_F_F9"></div>
+			<div id="KEY_F_F10"></div>
+			<div id="KEY_F_F11"></div>
+			<div id="KEY_F_F12"></div>
+			<div id="KEY_F_F13"></div>
+			<div id="KEY_F_F14"></div>
+			<div id="KEY_F_F15"></div>
+			<div id="KEY_F_F16"></div>
+			<div id="KEY_F_F17"></div>
+			<div id="KEY_F_F18"></div>
+			<div id="KEY_F_F19"></div>
+			<div id="KEY_F_F20"></div>
+			<div id="KEY_F_F21"></div>
+			<div id="KEY_F_F22"></div>
+			<div id="KEY_F_F23"></div>
+			<div id="KEY_F_F24"></div>
+		</div>
+
+        <div id="alphanumeric">
+            <div id="KEY_A_TILDE"></div>
+            <div id="KEY_A_1"></div>
+            <div id="KEY_A_2"></div>
+            <div id="KEY_A_3"></div>
+            <div id="KEY_A_4"></div>
+            <div id="KEY_A_5"></div>
+            <div id="KEY_A_6"></div>
+            <div id="KEY_A_7"></div>
+            <div id="KEY_A_8"></div>
+            <div id="KEY_A_9"></div>
+            <div id="KEY_A_0"></div>
+            <div id="KEY_A_MINUS"></div>
+            <div id="KEY_A_PLUS"></div>
+            <div id="KEY_A_BACKSPACE" style="grid-column: span 4;"></div>
+            
+            <div id="KEY_A_TAB" style="grid-column: span 3;"></div>
+            <div id="KEY_A_Q"></div>
+            <div id="KEY_A_W"></div>
+            <div id="KEY_A_E"></div>
+            <div id="KEY_A_R"></div>
+            <div id="KEY_A_T"></div>
+            <div id="KEY_A_Y"></div>
+            <div id="KEY_A_U"></div>
+            <div id="KEY_A_I"></div>
+            <div id="KEY_A_O"></div>
+            <div id="KEY_A_P"></div>
+            <div id="KEY_A_BRACKET_OPENING"></div>
+            <div id="KEY_A_BRACKET_CLOSING"></div>
+            <div id="KEY_A_BACKSLASH" style="grid-column: span 3;"></div>
+            
+            <div id="KEY_A_CAPSLOCK" style="grid-column: span 4;"></div>
+            <div id="KEY_A_A"></div>
+            <div id="KEY_A_S"></div>
+            <div id="KEY_A_D"></div>
+            <div id="KEY_A_F"></div>
+            <div id="KEY_A_G"></div>
+            <div id="KEY_A_H"></div>
+            <div id="KEY_A_J"></div>
+            <div id="KEY_A_K"></div>
+            <div id="KEY_A_L"></div>
+            <div id="KEY_A_SEMICOLON"></div>
+            <div id="KEY_A_QUOTE"></div>
+            <div id="KEY_A_ENTER" style="grid-column: span 4;"></div>
+            
+            <div id="KEY_A_SHIFT_L" style="grid-column: span 5;"></div>
+            <div id="KEY_A_Z"></div>
+            <div id="KEY_A_X"></div>
+            <div id="KEY_A_C"></div>
+            <div id="KEY_A_V"></div>
+            <div id="KEY_A_B"></div>
+            <div id="KEY_A_N"></div>
+            <div id="KEY_A_M"></div>
+            <div id="KEY_A_COMMA"></div>
+            <div id="KEY_A_DOT"></div>
+            <div id="KEY_A_SLASH"></div>
+            <div id="KEY_A_SHIFT_R" style="grid-column: span 5;"></div>
+			
+            <div id="KEY_A_CTRL_L" style="grid-column: span 3;"></div>
+            <div id="KEY_A_ALT_L" style="grid-column: span 3;"></div>
+            <div id="KEY_A_CMD_L" style="grid-column: span 3;"></div>
+            <div id="KEY_A_SPACE" style="grid-column: span 12;"></div>
+            <div id="KEY_A_ALT_R" style="grid-column: span 3;"></div>
+            <div id="KEY_A_CTRL_R" style="grid-column: span 3;"></div>
+            <div id="KEY_A_MENU_R" style="grid-column: span 3;"></div>
+        </div>
+
+		<div id="control">
+			<div id="KEY_C_PRINTSCREEN"></div>
+			<div id="KEY_C_SCROLLOCK"></div>
+			<div id="KEY_C_PAUSE_BREAK"></div>
+			
+			<div id="KEY_C_INSERT"></div>
+			<div id="KEY_C_HOME"></div>
+			<div id="KEY_C_PAGE_UP"></div>
+			
+			<div id="KEY_C_DELETE"></div>
+			<div id="KEY_C_END"></div>
+			<div id="KEY_C_PAGE_DOWN"></div>
+			
+			<div class="placeholder" style="visibility: hidden;"></div>
+			<div id="KEY_C_ARROW_UP"></div>
+			<div class="placeholder" style="visibility: hidden;"></div>
+			
+			<div id="KEY_C_ARROW_LEFT"></div>
+			<div id="KEY_C_ARROW_DOWN"></div>
+			<div id="KEY_C_ARROW_RIGHT"></div>
+		</div>
+		
+		<div id="numpad">
+			<div id="KEY_N_NUMLOCK"></div>
+			<div id="KEY_N_SLASH"></div>
+			<div id="KEY_N_STAR"></div>
+			<div id="KEY_N_MINUS"></div>
+			
+			<div id="KEY_N_7"></div>
+			<div id="KEY_N_8"></div>
+			<div id="KEY_N_9"></div>
+			<div id="KEY_N_PLUS" style="grid-row: span 4;"></div>
+			
+			<div id="KEY_N_4"></div>
+			<div id="KEY_N_5"></div>
+			<div id="KEY_N_6"></div>
+			
+			<div id="KEY_N_1"></div>
+			<div id="KEY_N_2"></div>
+			<div id="KEY_N_3"></div>
+			<div id="KEY_A_ENTER" style="grid-row: span 4;"></div>
+			
+			<div id="KEY_N_0" style="grid-column: span 4;"></div>
+			<div id="KEY_N_DECIMAL_POINT"></div>
+		</div>
+
+		<div id="touchpad">
+			<div id="pad" style="grid-column: span 99; grid-row: span 99; display: inline-block; background-color: rgba(100,100,100,0.5);"></div>
+		</div>
+	</div>
+	
+		<script>
+		const key_buttons_selector = "#alphanumeric div, #control div, #numpad div, #function div, #media div";
+		
+		for (let i = 0; i < document.querySelectorAll( key_buttons_selector ).length; i++){
+		
+            let keydown = function() {  window.pywebview.api.key_down( document.querySelectorAll( key_buttons_selector )[i].id );  };
+			let keyup = function()   {  window.pywebview.api.key_up  ( document.querySelectorAll( key_buttons_selector )[i].id );  };
+
+			document.querySelectorAll( key_buttons_selector )[i].onpointerdown = keydown;
+			document.querySelectorAll( key_buttons_selector )[i].onpointerup = keyup;
+			document.querySelectorAll( key_buttons_selector )[i].onpointerout = keyup;
+		}
+		</script>
+		
+		<script>
+			const DOUBLE_TAP = 200;
+			const MAX_TAP = 400;
+			
+			const SCROLL_SPEED = -1/200;
+			const POINTER_SPEED = 1.8;
+		
+			var pad_x = 0;
+			var pad_y = 0;
+			
+			var pad_x0 = 0;
+			var pad_y0 = 0;
+			var pad_t0 = 0;
+			
+			var pad_x100 = 0;
+			var pad_y100 = 0;
+			var pad_t100 = 0;
+			
+			var hold_left = false;
+			var second_button = false;
+			
+			var active_touches = 0;
+			
+			document.querySelector("#pad").addEventListener('touchmove', // one finger -> move mouse
+				function(evt){
+					evt.preventDefault();
+					//console.table(evt.changedTouches);
+					
+					if (active_touches == 1) {
+						window.pywebview.api.pointer_move( Math.round((evt.changedTouches[0].screenX-pad_x)*POINTER_SPEED), Math.round((evt.changedTouches[0].screenY-pad_y)*POINTER_SPEED) );
+					}
+					else if (active_touches == 2 && evt.changedTouches[0].identifier == 0) {
+						window.pywebview.api.mouse_scroll(Math.round( (pad_y0-evt.changedTouches[0].screenY)*SCROLL_SPEED ));
+					}
+					
+					pad_x = evt.changedTouches[0].screenX;
+					pad_y = evt.changedTouches[0].screenY;
+				} 
+			);
+			
+			document.querySelector("#pad").addEventListener('touchstart', 
+				function(evt){
+					evt.preventDefault();
+					
+					pad_x = evt.changedTouches[0].screenX;
+					pad_y = evt.changedTouches[0].screenY;
+
+					if (Math.abs(pad_x-pad_x0) <= 30 && Math.abs(pad_y-pad_y0) <= 30 && Date.now()-pad_t100 <= DOUBLE_TAP && active_touches == 0 /*&& hold_left == true*/) {
+						hold_left = true;
+						setTimeout(function(){window.pywebview.api.pointer_click(1,true);}, 1);
+						console.log("[touchpad] mouse down");
+					}
+					else {
+						hold_left = false;
+					}
+					
+
+					
+					pad_x0 = evt.changedTouches[0].screenX;
+					pad_y0 = evt.changedTouches[0].screenY;
+					pad_t0 = Date.now();
+
+					active_touches++;
+				} 
+			);
+
+			document.querySelector("#pad").addEventListener('touchend', 
+				function(evt){
+					evt.preventDefault();
+
+					pad_x = evt.changedTouches[0].screenX;
+					pad_y = evt.changedTouches[0].screenY;
+					
+					
+					
+					if (hold_left == true){
+						setTimeout(function(){window.pywebview.api.pointer_click(1,false);}, 2);
+						console.log("[touchpad] mouse up");
+						hold_left = false;
+					}
+					else if (Math.abs(pad_x-pad_x0) <= 2 && Math.abs(pad_y-pad_y0) <= 2 && Date.now()-pad_t0 <= MAX_TAP) { // was it click or move?
+						
+						if (active_touches == 1 && !second_button) {
+							setTimeout(function(){ if(hold_left == false){ window.pywebview.api.pointer_click(1); console.log("[touchpad] mouse left click");}  }, DOUBLE_TAP);
+						}
+						else if (active_touches == 2) {
+							second_button = true;
+							setTimeout(function(){ if(hold_left == false){ window.pywebview.api.pointer_click(2); console.log("[touchpad] mouse right click"); second_button = false;}  }, DOUBLE_TAP);
+						}
+					}
+					else {
+						console.log("[touchpad] ???unknown???",pad_x-pad_x0,pad_y-pad_y0);
+					}
+					
+					pad_x100 = pad_x;
+					pad_y100 = pad_y;
+					pad_t100 = Date.now();
+					
+					
+					active_touches--;
+				} 
+			);
+		</script>
+			
+		<script>/*window.pywebview.api.visualize();*/</script>
+		
+	</body>
+</html>
