@@ -15,9 +15,9 @@ Fully customizable onscreen keyboard and touchpad app written in python and HTML
  
 ### Configuration
  there are 3 places where you can edit something
- * `oshid.py` - [variables on the begining](https://github.com/mi4code/onscreen-hid/oshid.py#37)
+ * `oshid.py` - [variables on the begining](https://github.com/mi4code/onscreen-hid/blob/master/oshid.py#37)
  * `ui.html` = UI file 
-    There are [some CSS variables](https://github.com/mi4code/onscreen-hid/ui.html#5) to make basic customization easier.
+    There are [some CSS variables](https://github.com/mi4code/onscreen-hid/blob/master/ui.html#5) to make basic customization easier.
     If you want custom UI you can build your own (just use same `ids` and callbacks - `window.pywebview.api.key_down(<id>);` `window.pywebview.api.key_up(<id>);`).
  * `keys.csv` = layout/key mapping file
    
