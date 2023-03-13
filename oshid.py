@@ -37,7 +37,7 @@
 
 
 KEY_MAPPING_FILE = ".//keys.csv"
-KEYBOARD_UI_FILE = ".//ui.html"#".//touchpad.html" #".//pykbd.html"
+KEYBOARD_UI_FILE = ".//ui.html"
 
 FORCE_PYWEBVIEW_RENDERER = "" # gtk/edgechromium/qt(not recomended)/cocoa(untested, not gonna work)
 FORCE_KEYBOARD_BACKEND = "" # mouse/pynput
