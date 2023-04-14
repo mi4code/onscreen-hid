@@ -20,6 +20,9 @@
     <‎‏‎‏‭‮https://kbdlayout.info/kbdusx/virtualkeys>
     <https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes>
     <https://www.compart.com/en/unicode/>
+    
+    <https://github.com/boppreh/keyboard/pull/538>
+    <https://github.com/moses-palmer/pynput/pull/287/files>
 
 #### CALL ORDER:
     touch button key is pressed -> javascript.ontouchstartend -> api.keyupdown -> KEYS.keyupdown[makes decisions + asks] -> KBD_BACKEND
@@ -496,7 +499,7 @@ class webview_api:
     def UI_minimize(self):
         window.minimize()
     def UI_settings(self):
-        window.create_confirmation_dialog("Currently there is no GUI settings. If you want to learn how to customize this keyboard see github.com/mi4code/onscreen-hid#configuration","NO SETTINGS YET!")
+        window.create_confirmation_dialog("NO SETTINGS YET!","Currently there is no GUI settings. If you want to learn how to customize this keyboard see github.com/mi4code/onscreen-hid#configuration")
     
 
 
@@ -538,7 +541,7 @@ if DRAW_MOUSE_POINTER != "":
         easy_drag=False,
         on_top=True,
         frameless=True,
-        take_focus=False,
+        focus=False,
         transparent=True
         )
 
@@ -550,7 +553,6 @@ API = webview_api()
 window=webview.create_window('pykbd',
     html=open(KEYBOARD_UI_FILE,"r",encoding="utf-8").read(),  
     js_api=API,
-
     x=0,
     y=webview.screens[0].height-250 -50,
     width=webview.screens[0].width,#1200 (1:3)
@@ -559,7 +561,6 @@ window=webview.create_window('pykbd',
     on_top=True,
     frameless=True,
     transparent=platform.system()!="Windows",  # causes problems on windows (window troughtclickable)
-    
-    take_focus=False,
+    focus=False,
     )
 webview.start(func=lambda: API.visualize(), gui=FORCE_PYWEBVIEW_RENDERER, debug=PYWEBVIEW_DEBUG)
